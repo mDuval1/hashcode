@@ -17,10 +17,11 @@ def main(solver, instance):
     print(instances[0])
     # print(json.dumps(instances[0]))
     # print('Done.')
-    # solutions = []
+    solutions = []
     for instance in instances:
         # print(f'Solving instance {instance["path"]}')
         solutions.append(solve(instance, solver))
+    print(solutions[0])
     # print('Done.')
     # print('Checking validity...', end='\t')
     # for instance, solution in list(zip(instances, solutions)):
