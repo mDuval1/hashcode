@@ -5,6 +5,31 @@ ALL_INSTANCES = {
 }
 
 
+instance = {
+    'headers': {
+        'duration': 10,
+        'n_inter': 5,
+        'n_streets': 5,
+        'n_cars': 10,
+        'bonus': 100
+    },
+    'streets': [
+        {
+            'start_intersection': 1,
+            'end_intersection': 2,
+            'name': 'blabla',
+            'cross_time': 5
+        }
+    ],
+    'paths': [
+        {
+            'n_streets': 3,
+            'names': ['blabla']
+        }
+    ]
+}
+
+
 def select_files(instances):
     if instances is None:
         return list(ALL_INSTANCES.values())
