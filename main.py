@@ -14,22 +14,20 @@ from scorer.score import score_solution
 def main(solver, instance):
     print('Reading instances')
     instances = read_files(instance)
-    print(instances[0])
     # print(json.dumps(instances[0]))
     # print('Done.')
     solutions = []
     for instance in instances:
         # print(f'Solving instance {instance["path"]}')
         solutions.append(solve(instance, solver))
-    print(solutions[0])
     print('Scoring...')
     total_scores = 0
     for instance, solution in list(zip(instances, solutions)):
         total_scores += score_solution(instance, solution)
     print(f'Total scores: {total_scores}')
-    print('Writing instances', end='\t')
-    write_solutions(solutions, instances)
-    print('Done.')
+    # print('Writing instances', end='\t')
+    # write_solutions(solutions, instances)
+    # print('Done.')
 
 
 if __name__ == '__main__':
