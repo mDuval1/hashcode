@@ -23,8 +23,8 @@ def process_path(path, i):
     }
 
 
-def read_instance(path):
-    with open(path, 'r') as f:
+def read_instance(file_path):
+    with open(file_path, 'r') as f:
         file = f.readlines()
     headers = list(map(int, file[0].split(' ')))
     D, I, S, V, F = headers
@@ -45,7 +45,8 @@ def read_instance(path):
             'bonus': F
         },
         'streets': streets_processed,
-        'paths': paths_processed
+        'paths': paths_processed,
+        'file_path': file_path
     }
     return instance
 

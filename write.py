@@ -26,13 +26,12 @@ def write_solution(path, solution, instance):
     for inter in inters:
         all_result += inter
 
-    print(all_result)
     with open(path, 'w') as f:
         f.write(all_result)
 
 
 def write_solutions(solutions, instances):
     for index, (solution, instance) in enumerate(zip(solutions, instances)):
-        # instance_path = instance['path'].split('/')[-1]
-        sol_path = './solutions/solution' + str(index)
+        sol_path = f'./solutions/solution_' + \
+            instance['file_path'].split('/')[-1]
         write_solution(sol_path, solution, instance)
