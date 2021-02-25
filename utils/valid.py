@@ -42,7 +42,7 @@ def check_validity(instance, solution):
     T = 0
 
     while validity and T < D:
-        validity = check_validity_T(instance, solution[T])
+        validity = check_validity_T(instance['streets'], solution[T])
         T += 1
 
     return validity
