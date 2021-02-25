@@ -1,22 +1,27 @@
+import numpy as np
+import tqdm
+
+
 def solve(instance):
-    D = instance['headers']['duration']
+    nb_inter = instance['headers']['n_inter']
+    inter_to_streets = {i: [] for i in range(nb_inter)}
+    streets_to_inter = {}
     streets = instance['streets']
+    for street_index, street in streets.items():
+        inter = street['end_intersection']
+        streets_to_inter[street_index] = inter
+        inter_to_streets[inter].append(street_index)
+    inter_to_nb_streets = {k: len(v) for k, v in inter_to_streets.items()}
+
+    D = instance['headers']['duration']
     nb_streets = len(streets)
-    intersection_with_green_light = [False] * D 
-    res = [str(D)]
-    for i in range(1, D+1):
-        is_attributed = False
-        nb_street = 0
-        while not is_attributed:
-            street = streets[nb_street]
-            if street['end_intersection'] == i and intersection_with_green_light[i] == False:
-                intersection_with_green_light[i] = True
-                res.append(str(i))
-                res.append('1')
-                res.append(street['name']+' '+str(D))
-                is_attributed = True
-            elif nb_street >= nb_streets-1:
-                is_attributed = True
-            else:
-                nb_street += 1
-    return  "\n".join(str(i) for i in res)
+    solution = np.full((D, nb_streets), dtype=bool, fill_value=False)
+    # for
+    # tirages = np.random.randint(0, nb_streets, size=solution.shape)
+    for i in tqdm.tqdm(range(D)):
+        for intersection in range(nb_inter):
+            nb_streets = inter_to_nb_streets[intersection]
+            green = 0
+            street = inter_to_streets[intersection][green]
+            solution[i, street] = True
+    return solution
