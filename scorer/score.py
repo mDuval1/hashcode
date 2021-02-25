@@ -38,6 +38,8 @@ def score_solution(instance, solution):
             next_street_name = instance['paths'][first_car]['names'].pop(0)
             next_street = streetname_to_street[next_street_name]
             traveling_time = t + instance['streets'][next_street]['cross_time']
+            if traveling_time >= duration:
+                continue
             traveling_cars[traveling_time].append((first_car, next_street))
 
         for car, street in traveling_cars[t]:
