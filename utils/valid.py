@@ -28,7 +28,7 @@ def check_validity_T(streets, solution_T):
 
         intersection = intersections[intersection_key]
         number_of_green_lights = 0
-        for street in intersections:
+        for street in intersection:
             light = solution_T[street]
             number_of_green_lights += light
 
