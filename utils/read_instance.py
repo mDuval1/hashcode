@@ -1,28 +1,51 @@
 from os import set_blocking
 
 
-def process_pizza(pizza, i):
-    prms = pizza.split(' ')
-    return {'id': i, 'n_ingre': int(prms[0]), 'ingredients': prms[1:-1]}
+def process_street(street, i):
+    prms = street.split(' ')
+    return {
+        'start_intersection': int(prms[0]),
+        'end_intersection': int(prms[1]),
+        'name': prms[2],
+        'cross_time': int(prms[3].split('\n')[0]),
+        'index': i
+    }
+
+
+def process_path(path, i):
+    prms = path.split(' ')
+    streets = prms[1:-1]
+    streets.append(prms[-1].split('\n')[0])
+    return {
+        'n_streets': int(prms[0]),
+        'names': streets,
+        'index': i
+    }
 
 
 def read_instance(path):
     with open(path, 'r') as f:
         file = f.readlines()
-    headers = list(map(int, file[0].split(' ')[:-1]))
-    pizzas = file[1:]
-    pizzas_processed = {}
-    for i, pizza in enumerate(pizzas):
-        pizzas_processed[i] = process_pizza(pizza, i)
+    headers = list(map(int, file[0].split(' ')))
+    D, I, S, V, F = headers
+    streets = file[1:S+1]
+    paths = file[S+1:S+1+V]
+    streets_processed = []
+    for i, street in enumerate(streets):
+        streets_processed.append(process_street(street, i))
+    paths_processed = []
+    for i, path in enumerate(paths):
+        paths_processed.append(process_path(path, i))
     instance = {
         'headers': {
-            'n_pizzas': headers[0],
-            't_2': headers[1],
-            't_3': headers[2],
-            't_4': headers[3]
+            'duration': D,
+            'n_inter': I,
+            'n_streets': S,
+            'n_cars': V,
+            'bonus': F
         },
-        'pizzas': pizzas_processed,
-        'path': path
+        'streets': streets_processed,
+        'paths': paths_processed
     }
     return instance
 

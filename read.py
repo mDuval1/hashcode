@@ -1,7 +1,12 @@
 import utils.read_instance
 
 ALL_INSTANCES = {
-    '0': './instances/00.txt',
+    '0': './instances/a.txt',
+    '1': './instances/b.txt',
+    '2': './instances/c.txt',
+    '3': './instances/d.txt',
+    '4': './instances/e.txt',
+    '5': './instances/f.txt',
 }
 
 
