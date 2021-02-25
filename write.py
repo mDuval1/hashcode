@@ -1,14 +1,26 @@
 import numpy as np
+import tqdm
 
 
 def write_solution(path, solution, instance):
     n_inter = instance['headers']['n_inter']
     streets = instance['streets']
+    inter_to_streets = {i: [] for i in range(n_inter)}
+    streets_to_inter = {}
+    streets = instance['streets']
+    for street_index, street in streets.items():
+        inter = street['end_intersection']
+        streets_to_inter[street_index] = inter
+        inter_to_streets[inter].append(street_index)
     inters = []
-    for inter in range(n_inter):
+    for inter in tqdm.tqdm(range(n_inter)):
         result = ''
-        streets_with_inter = [
-            (street_number, street) for street_number, street in streets.items() if inter == street['end_intersection']]
+        street_ids = inter_to_streets[inter]
+        streets_with_inter = []
+        for id_ in street_ids:
+            streets_with_inter.append((id_, streets[id_]))
+        # streets_with_inter = [
+        #     (street_number, street) for street_number, street in streets.items() if inter == street['end_intersection']]
         street_names = []
         for street_number, street in streets_with_inter:
             total = np.sum(solution[:, street_number])
