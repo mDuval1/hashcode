@@ -28,7 +28,7 @@ def main(solver, instance):
         total_scores += score_solution(instance, solution)
     print(f'Total scores: {total_scores}')
     print('Writing instances', end='\t')
-    instances = write_solutions(solutions, instances)
+    write_solutions(solutions, instances)
     print('Done.')
 
 
