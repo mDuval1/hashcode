@@ -22,6 +22,9 @@ def main(solver, instance):
         solutions.append(solve(instance, solver))
     # print('Scoring...')
     # total_scores = 0
+    for instance, solution in list(zip(instances, solutions)):
+        if not check_validity(instance, solution):
+            raise('PROBLEM')
     # for instance, solution in list(zip(instances, solutions)):
     #     total_scores += score_solution(instance, solution)
     # print(f'Total scores: {total_scores}')
