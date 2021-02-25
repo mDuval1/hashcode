@@ -4,34 +4,38 @@ Checks the submission is valid
 import networkx as nx
 
 
-def intersections_dict(streets):
+def creating_graph(streets):
     G = nx.DiGraph()
     for street in streets.element():
         start = street['start_intersection']
         end = street['end_intersection']
-        length = street['cross_time']
-        G.add_edge(start, end, weight=length)
+        G.add_edge(start, end)
 
-    return G.nodes()
+    return G
 
 
 def check_validity_T(streets, solution_T):
 
-    intersections = intersections_dict(streets)
+    G = creating_graph(streets)
     validity = True
-    intersection_key = 0
-    while validity:
+
+    intersections = G.nodes()
+    edges = G.out_edges()
+    keys_list = list(intersections.keys())
+    intersection_key = keys_list.pop()
+
+    while validity and intersection_key:
 
         intersection = intersections[intersection_key]
         number_of_green_lights = 0
-        for street in intersection:
+        for street in intersections:
             light = solution_T[street]
             number_of_green_lights += light
 
         if number_of_green_lights > 1:
             validity = False
 
-        intersection_key += 1
+        intersection_key = keys_list.pop()
 
     return validity
 
