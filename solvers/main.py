@@ -1,6 +1,7 @@
 import solvers.base
 import solvers.naive
 import solvers.alea
+import solvers.clever
 
 
 def solve(instance, solver):
@@ -11,3 +12,5 @@ def solve(instance, solver):
         return solvers.naive.solve(instance)
     if solver == 'alea':
         return solvers.alea.solve(instance)
+    if solver == 'clever':
+        return solvers.clever.solve(instance)
