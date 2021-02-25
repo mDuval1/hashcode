@@ -22,7 +22,7 @@ def main(solver, instance):
         # print(f'Solving instance {instance["path"]}')
         solutions.append(solve(instance, solver))
     print(solutions[0])
-    # print('Done.')
+    print('Done.')
     # print('Checking validity...', end='\t')
     # for instance, solution in list(zip(instances, solutions)):
     #     check_validity(instance, solution)
@@ -33,7 +33,7 @@ def main(solver, instance):
     #     total_scores += score_solution(instance, solution)
     # print(f'Total scores: {total_scores}')
     print('Writing instances', end='\t')
-    instances = write_solutions(solutions, instances)
+    write_solutions(solutions, instances)
     print('Done.')
 
 
