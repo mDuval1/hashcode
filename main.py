@@ -18,9 +18,9 @@ def main(solver, instance):
     # print(json.dumps(instances[0]))
     # print('Done.')
     # solutions = []
-    # for instance in instances:
-    #     print(f'Solving instance {instance["path"]}')
-    #     solutions.append(solve(instance, solver))
+    for instance in instances:
+        # print(f'Solving instance {instance["path"]}')
+        solutions.append(solve(instance, solver))
     # print('Done.')
     # print('Checking validity...', end='\t')
     # for instance, solution in list(zip(instances, solutions)):
