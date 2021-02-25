@@ -32,9 +32,9 @@ def main(solver, instance):
     # for instance, solution in list(zip(instances, solutions)):
     #     total_scores += score_solution(instance, solution)
     # print(f'Total scores: {total_scores}')
-    # print('Writing instances', end='\t')
-    # instances = write_solutions(solutions, instances)
-    # print('Done.')
+    print('Writing instances', end='\t')
+    instances = write_solutions(solutions, instances)
+    print('Done.')
 
 
 if __name__ == '__main__':
