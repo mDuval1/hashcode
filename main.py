@@ -14,6 +14,7 @@ from scorer.score import score_solution
 def main(solver, instance):
     print('Reading instances')
     instances = read_files(instance)
+    print(instances[0])
     # print(json.dumps(instances[0]))
     # print('Done.')
     # solutions = []

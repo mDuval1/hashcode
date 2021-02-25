@@ -30,12 +30,12 @@ def read_instance(path):
     D, I, S, V, F = headers
     streets = file[1:S+1]
     paths = file[S+1:S+1+V]
-    streets_processed = []
+    streets_processed = {}
     for i, street in enumerate(streets):
-        streets_processed.append(process_street(street, i))
-    paths_processed = []
+        streets_processed[i] = process_street(street, i)
+    paths_processed = {}
     for i, path in enumerate(paths):
-        paths_processed.append(process_path(path, i))
+        paths_processed[i] = process_path(path, i)
     instance = {
         'headers': {
             'duration': D,
