@@ -12,6 +12,8 @@ def write_solution(path, solution, instance):
         street_names = []
         for street_number, street in streets_with_inter:
             total = np.sum(solution[:, street_number])
+            if total == 0:
+                continue
             street_names.append(f'{street["name"]} {total}')
         if len(street_names) == 0:
             continue
