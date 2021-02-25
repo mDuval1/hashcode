@@ -4,8 +4,8 @@
 rue-de-londres 6
 1
 2
-rue-d-amsterdam 2
-rue-d-athenes 4
+rue-d-amsterdam 4
+rue-d-athenes 2
 2
 1
 rue-de-moscou 6
